@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { useForm } from '@mantine/form';
 import { TextInput, NumberInput, Select, Button, Paper, Stack, Group, Title, MultiSelect } from '@mantine/core';
-import { DatePickerInput } from '@mantine/dates';
+import { DatePickerInput, DatesProvider } from '@mantine/dates';
 import { CalendarLevel } from '@mantine/dates';
 
 
@@ -62,6 +62,7 @@ const WeeklyTaskInputForm = () => {
                             { value: 'low', label: 'Low' },
                             { value: 'medium', label: 'Medium' },
                             { value: 'high', label: 'High' },
+                            { value: 'On fire', label: 'On fire' },
                         ]}
                         {...form.getInputProps('priority')}
                     />
@@ -78,11 +79,10 @@ const WeeklyTaskInputForm = () => {
                     />
 
                     <DatePickerInput
-                        type="range"
-                        label="Pick dates range"
-                        placeholder="Pick dates range"
-                        value={value}
-                        onChange={setValue}
+                        label="Specific Day (if applicable)"
+                        placeholder="Pick a date"
+                        clearable
+                        {...form.getInputProps('specificDay')}
                     />
 
                     <Group justify="flex-end" mt="md">
